@@ -1,0 +1,95 @@
+@font-face {
+    font-family: FZFangSong;
+    src: url(./FZFangSong.ttf);
+}
+#widthDetector {
+    color: #0000;
+    position:absolute;
+    top:-200px;
+}
+#widthDetector, #main {
+    font-family: FZFangSong;
+    user-select: none;
+    padding-left: 82px;
+    list-style-type: cjk-ideographic;
+}
+#main > li::marker {
+    font-size: 32px;
+    font-weight: bold;
+}
+li > ol {
+    margin-left: -46px;
+    margin-bottom: 50px;
+}
+li > ol > li, #widthDetector {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.blank {
+    word-break: break-all;
+    color: #0000;
+    border-bottom: 1px solid #bbb;
+}
+.viewed {
+    background-color: #f001;
+    border-bottom: 1px solid red;
+}
+.skiped {
+    background-color: #fa04;
+    border-bottom: 1px solid #fa0;
+}
+@keyframes do-show {
+    0% {
+        border-bottom: 1px solid #99f;
+        background-color: #eef;
+    }
+    100% {
+        border-bottom: 1px solid #bbb;
+        background-color: #0000;
+    }
+}
+.edit {
+    z-index: -1;
+}
+.edit, .answer {
+    color: #0000;
+    position: absolute;
+    top: 0;
+    margin: 0;
+}
+.edit > .blank {
+    outline: none;
+    word-break: break-all;
+    border: none;
+    color: #000;
+}
+.answer > .blank {
+    border: none;
+    transition: all .2s;
+}
+.answer > .blank:hover {
+    color: #000;
+    background-color: #fffc;
+}
+.hide, .hide:hover {
+    color: #0000 !important;
+}
+.show {
+    color: #000 !important;
+    /*animation: do-show .2s forwards;*/
+}
+.display {
+    display: none;
+}
+@keyframes fake {
+    0% {
+        opacity: 1;
+        position: relative;
+        top: 0;
+    }
+    100% {
+        opacity: 0;
+        position: relative;
+        top: 20px;
+    }
+}
