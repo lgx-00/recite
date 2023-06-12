@@ -11,6 +11,7 @@
     font-family: FZFangSong;
     user-select: none;
     padding-left: 82px;
+    padding-bottom: 200px;
     list-style-type: cjk-ideographic;
 }
 #main > li::marker {
@@ -62,6 +63,7 @@ li > ol > li, #widthDetector {
     word-break: break-all;
     border: none;
     color: #000;
+    transition: all .2s;
 }
 .answer > .blank {
     border: none;

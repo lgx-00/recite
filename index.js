@@ -32,6 +32,7 @@ const fn = (answer, blank, { signal }) => answer.addEventListener('mouseover',
             (function question(qid = 0) {
                 new Promise((resolve1, reject1) => {
                     const ls = Array.from(data[items[tid]][qid] || []);
+                    const li = document.createElement('li');
                     const blanks = [];
                     const answers = [];
                     const editable = [];
@@ -43,6 +44,7 @@ const fn = (answer, blank, { signal }) => answer.addEventListener('mouseover',
                         const li = document.createElement('li');
                         li.innerHTML = `<p>${ls[0]}</p>`;
                         ol.appendChild(li);
+                        setTimeout(() => main.scrollIntoView({block: "end", behavior: "smooth"}), 0);
                         resolve1(qid + qstep);
                         return;
                     } else if (ls.length === 2 && 'string' !== typeof ls[1]) {
@@ -52,6 +54,7 @@ const fn = (answer, blank, { signal }) => answer.addEventListener('mouseover',
                         li.appendChild(obj);
                         ol.appendChild(li);
 
+                        setTimeout(() => main.scrollIntoView({block: "end", behavior: "smooth"}), 0);
                         resolve1(qid + qstep);
                         return;
                         /*
@@ -72,12 +75,12 @@ const fn = (answer, blank, { signal }) => answer.addEventListener('mouseover',
                         const item = ls.shift().split('{}').map((s, i) => s + (ls[i]
                         ? `<span class="blank">${ls[i]}</span>` : ''));
 
-                        const li = document.createElement('li');
                         li.innerHTML = `<p>${item.join('')}</p>`.repeat(3);
                         li.style = qstep ? 'animation:fake reverse .3s forwards' : 'position:relative';
                         li.firstChild.classList.add('edit');
                         li.children[1].classList.add('answer');
                         ol.appendChild(li);
+                        setTimeout(() => main.scrollIntoView({block: "end", behavior: "smooth"}), 0);
 
                         qstep = 1;
                         blanks.push(... li.lastChild.querySelectorAll('.blank'));
@@ -163,7 +166,7 @@ const fn = (answer, blank, { signal }) => answer.addEventListener('mouseover',
                                     edit.textContent = ans;
                                     edit.contentEditable = 'false';
                                     edit.blank.classList.add('skiped');
-                                    do {edit = edit.next} while (edit?.blank.classList.contains('show'));
+                                    do { edit = edit.next } while (edit?.blank.classList.contains('show'));
                                     res(edit);
                                 }
                             });
